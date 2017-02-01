@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ASPNET_MVC5_2.Security;
 
 namespace ASPNET_MVC5_2.Controllers
 {
@@ -16,6 +17,13 @@ namespace ASPNET_MVC5_2.Controllers
 
         [Authorize]
         public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        [AuthorizeRoles("Admin", "Manager")]
+        public ActionResult AdminOnly() { return View(); }
+        public ActionResult UnAuthorized()
         {
             return View();
         }
